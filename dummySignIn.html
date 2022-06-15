@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        /* signup form */
+        form{
+            width: 30%;
+            margin: auto;
+            padding: 2% 1%;
+            background-color: aquamarine;
+        }
+        form>input{
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid grey;
+            height: 25px;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+        /* signup styling Ends here */
+
+    </style>
+</head>
+<body>
+    <!-- signup form -->
+    <form >
+        <input type="email" placeholder="enter your email" id="email">
+        <input type="password" placeholder="enter your password" id="password">
+        <input type="submit" value="Sign In">
+    </form>
+</body>
+</html>
+<script>
+    let userData = JSON.parse(localStorage.getItem("userLoginData"))||[]
+    let login = JSON.parse(localStorage.getItem("login"))||[]
+    document.querySelector("form").addEventListener("submit",function(event){
+        event.preventDefault()
+        let data = {
+            email:document.querySelector("#email").value,
+            password:document.querySelector("#password").value
+        }
+        if(checkCredentials(data.email,data.password)==true){
+            alert("Login Seccessful")
+            login.push(data)
+            localStorage.setItem("login",JSON.stringify(login))
+            window.location.href="women.html"
+        }
+        else(
+            alert("Wrong Credentials")
+        )
+    })
+
+
+    function checkCredentials(email,password){
+        let filtered = userData.filter(function(ele){
+            return ele.email==email&&ele.password==password
+        })
+        if(filtered.length>0){return true}
+        else{return false}
+}
+
+
+</script>

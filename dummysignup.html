@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        /* signup form */
+        form{
+            width: 30%;
+            margin: auto;
+            padding: 2% 1%;
+            background-color: aquamarine;
+        }
+        form>input{
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid grey;
+            height: 25px;
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+        /* signup styling Ends here */
+
+    </style>
+</head>
+<body>
+    <!-- signup form -->
+    <form >
+        <input type="text" placeholder="enter your name" id="name">
+        <input type="email" placeholder="enter your email" id="email">
+        <input type="password" placeholder="enter your password" id="password">
+        <input type="submit" value="Sign Up">
+    </form>
+</body>
+</html>
+<script>
+    // mark the storage
+    let userData = JSON.parse(localStorage.getItem("userLoginData"))||[]
+
+    // take the data from the user and save to the local storage
+    document.querySelector("form").addEventListener("submit",function(event){
+        event.preventDefault()
+        let data ={
+            name:document.querySelector("#name").value,
+            email:document.querySelector("#email").value,
+            password:document.querySelector("#password").value,
+        }
+        if (checkLogin(data.email)==true){
+            userData.push(data)
+            localStorage.setItem("userLoginData",JSON.stringify(userData))
+            alert("Sign In Successful")
+            window.location.href="dummySignIn.html"
+        }
+        else{
+            alert("Email Already Exist - Please Sign In")
+        }
+    })
+
+    function checkLogin(email){
+        let filtered = userData.filter(function(ele){
+            return ele.email==email
+        })
+        if(filtered.length>0){return false}
+        else{return true}
+    }
+ 
+
+
+
+
+</script>
