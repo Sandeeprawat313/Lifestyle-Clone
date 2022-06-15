@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        #maindiv{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            width: 98%;
+            margin: auto;
+        }
+        #maindiv>div:hover{
+            width: 110%;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        #maindiv>div{
+            padding: 10px;
+        }
+        #maindiv img{
+            width: 100%;
+        }
+        #maindiv button{
+            background-color:#faa61b;
+            width: 100%;
+            height: 45px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h5>FILTER ITEMS</h5>
+    <select id="Categ">
+        <option value="">--</option>
+        <option value="cothing">Cothing</option>
+        <option value="footwere">Footwere</option>
+        <option value="Accessories">Accessories</option>
+    </select>
+    <H5>SORT ITEMS</H5>
+    <select id="sortby">
+        <option value="">--</option>
+        <option value="Alphabetically-AtoZ">Alphabetically-AtoZ</option>
+        <option value="Alphabetically-ZtoA">Alphabetically-ZtoA</option>
+        <option value="Price low to high">Price low to high</option>
+        <option value="Price high to low">Price high to low</option>
+    </select>
+    <div id="maindiv"></div>
+</body>
+</html>
+<script>
+
+// take product data in the form of array of objects
+let productWomenData =[
+
+{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010459248-Multicolour-1000010459248_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"BOSSINI Women Solid Round Neck Top",
+categories:"cothing",
+Productid: "C12345"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
+rupeesig:"₹",
+price:649,
+productName:"BOSSINI Women Round Neck Lace top",
+categories:"cothing",
+Productid: "C12346"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010444494-Pink-DustyPink-1000010444494_01-2100.jpg",
+rupeesig:"₹",
+price:449,
+productName:"GINGER Women Textured Puffed Top",
+categories:"cothing",
+Productid: "C12347"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010444516-Grey-Sage-1000010444516_01-2100.jpg",
+rupeesig:"₹",
+price:897,
+productName:"GINGER Women Solid Round Neck Top",
+categories:"cothing",
+Productid: "C12347"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"cothing",
+Productid: "C12348"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:2000,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"footwere",
+Productid: "f12348"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"footwere",
+Productid: "f12349"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"footwere",
+Productid: "f12350"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"footwere",
+Productid: "f12351"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"Accessories",
+Productid: "A12352"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"Accessories",
+Productid: "A12353"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"Accessories",
+Productid: "A12354"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"Accessories",
+Productid: "A12355"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007091961-1000007091960_01-2100.jpg",
+rupeesig:"₹",
+price:297,
+productName:"LAKME Eyeconic Kajal - Pack of 2",
+categories:"Accessories",
+Productid: "A12356"
+},
+
+]
+
+//call the display function using the above data as parameter
+displyData(productWomenData)
+
+// display data using JS
+function displyData(productWomenData){
+document.querySelector("#maindiv").innerHTML=""
+productWomenData.forEach(function(ele){
+let box = document.createElement("div")
+document.querySelector("#maindiv").append(box)
+let image = document.createElement("img")
+image.setAttribute("src",ele.image)
+let rupeesig = document.createElement("p")
+rupeesig.innerText=ele.rupeesig
+let price = document.createElement("p")
+price.innerText=ele.price
+let name = document.createElement("p")
+name.innerText=ele.productName
+let cat = document.createElement("p")
+cat.innerText=ele.categories
+let btn = document.createElement("button")
+btn.innerText="ADD TO BASKET"
+btn.addEventListener("click",function(){
+    if(checkCartItem(ele.Productid)==true){
+        cartData.push(ele)
+        localStorage.setItem("cartData",JSON.stringify(cartData))
+        alert("Product Added to the cart")
+    }
+    else{
+        alert("Product alredy in the cart")
+    }
+})
+box.append(image,rupeesig,price,name,cat,btn)
+})
+}
+
+// filter function
+document.querySelector("#Categ").addEventListener("change",function(){
+    filterData(Categ.value)
+})
+filterData("")//calling empty data on refresh
+function filterData(categories){
+   let filtered = productWomenData.filter(function(ele){
+        return ele.categories==categories
+    })
+    if(categories==""){
+    displyData(productWomenData)
+    sortFunc(productWomenData)
+    }
+    else{displyData(filtered)
+        sortFunc(filtered)}
+}
+
+// sorting function
+function sortFunc(filtered){
+    document.querySelector("#sortby").addEventListener("change",function(){ 
+    if(sortby.value ==="Price low to high"){
+        let sortData = filtered.sort(function(a,b){
+        return a.price-b.price
+    })
+    displyData(sortData)
+    console.log(sortData)
+    
+    }
+    if(sortby.value == "Price high to low"){
+        let sortData = filtered.sort(function(a,b){
+        return b.price-a.price
+    })
+    displyData(sortData)
+   
+    }
+    if(sortby.value == "Alphabetically-AtoZ"){
+        let sortData = filtered.sort(function(a,b){
+        if(a.productName>b.productName) return 1
+        if(a.productName<b.productName) return -1
+        return 0
+    })
+    displyData(sortData)
+    }
+    if(sortby.value == "Alphabetically-ZtoA"){
+        let sortData = filtered.sort(function(a,b){
+        if(a.productName>b.productName) return -1
+        if(a.productName<b.productName) return 1
+        return 0
+    })
+    displyData(sortData)
+    }
+})
+}
+
+//add to cart function
+let cartData = JSON.parse(localStorage.getItem("cartData"))||[]
+
+function checkCartItem(Productid){
+let filter = cartData.filter(function(ele){
+  return ele.Productid==Productid
+})
+if(filter.length>0){return false}
+else{return true}
+}
+</script>
