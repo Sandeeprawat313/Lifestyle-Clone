@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            padding: 20px;
+        }
+        #main{
+            
+            width: 60%;
+        }
+        #item{          
+            width:100%;
+            display: flex;
+          
+            padding: 10px;
+           
+        }
+        #item>div{
+            padding: 10px;
+        }
+        #item button{
+            background-color:#faa61b;
+            width: 200PX;
+            height: 45px;
+            border: none;
+        }  
+        #itemimage{
+            width: 50%;
+        } 
+        #itemimage>img{
+            width: 60%;
+            display: block;
+            margin: auto;
+        }
+        #itemDetails{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        #itemDetails>div{
+            display: flex;
+            gap: 5px;
+        }
+
+        body>div:nth-child(2){
+            border: 1px solid red;
+            width: 50%;
+        }
+        #orderSummary{
+            border: 1px solid green;
+            width: 80%;
+            margin-left: 20%;
+            
+        }
+        td{
+            border: 1px solid red;  
+            width: 100%;
+        }
+        #payway{
+            margin-left: 20%;
+        }
+        #payway>div{
+            margin-top: 20px;
+        }
+        #payway>div img{
+            width: 20%;
+            border: 1px solid grey;
+            border-radius: 50%;
+            margin-left: 10px;
+           
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <div>
+        <div id="orderSummary">
+            <h5>Your order summary</h5>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td>10,000</td>
+                    </tr>
+                    <tr>
+                        <td>Standard Ground Shipping:</td>
+                        <td>Free</td>                    
+                    </tr>
+                    <tr>
+                        <td>Total:</td>
+                        <td>10,000</td>                    
+                    </tr>
+                    <tr>
+                        <td>Apply Cupone code:</td>
+                        <td>masai</td>                    
+                    </tr>
+                    <tr>
+                        <td>Total amount to be paid:</td>
+                        <td>8,000</td>                    
+                    </tr>
+                </tbody>
+            </table>
+            <p>Shipping charges might vary based on delivery location</p>
+            <h5>Ways you can pay:</h5>
+        </div>
+        <div id="payway">
+            <div style="display:flex">
+                <img  src="https://i1.lmsin.net/website_images/ae/checkout/logo-visa.png" alt="">
+                <img src="https://i1.lmsin.net/website_images/ae/checkout/logo-visa.png" alt="">
+                <img src="https://i1.lmsin.net/website_images/ae/checkout/logo-visa.png" alt="">
+                <img src="https://i1.lmsin.net/website_images/ae/checkout/logo-visa.png" alt="">
+            </div>
+            <div>
+                <img src="https://i1.lmsin.net/website_images/ae/checkout/logo-visa.png" alt="">
+                <img src="https://i1.lmsin.net/website_images/ae/checkout/logo-visa.png" alt="">
+                <img src="https://i1.lmsin.net/website_images/ae/checkout/logo-visa.png" alt="">
+                <img src="https://i1.lmsin.net/website_images/ae/checkout/logo-visa.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+// take product data in the form of array of objects
+let cartData=JSON.parse(localStorage.getItem("cartData"))||[]
+
+// call the displayData giving localstorage data as parameter
+
+
+displyData(cartData)
+
+
+
+
+// display data using JS
+function displyData(cartData){
+document.querySelector("#main").innerHTML=""
+cartData.forEach(function(ele,index){
+let item = document.createElement("div")
+item.setAttribute("id","item")
+document.querySelector("#main").append(item)
+let box1=document.createElement("div")
+box1.setAttribute("id","itemimage")
+let box2=document.createElement("div")
+box2.setAttribute("id","itemDetails")
+item.append(box1,box2)
+let image = document.createElement("img")
+image.setAttribute("src",ele.image)
+box1.append(image)
+let rupeesig = document.createElement("p")
+rupeesig.innerText=ele.rupeesig
+let price = document.createElement("p")
+price.innerText=ele.price
+let name = document.createElement("p")
+name.innerText=ele.productName
+let inrbox = document.createElement("div")
+inrbox.append(rupeesig,price)
+let quantity = document.createElement("p")
+quantity.innerText=1
+let cat = document.createElement("p")
+cat.innerText=ele.categories
+let btn = document.createElement("button")
+btn.innerText="Delete the item"
+btn.addEventListener("click",function(){
+deleteCartItem(index)
+})
+box2.append( name,inrbox,quantity,btn)
+})
+}
+
+function deleteCartItem(index){
+    cartData.splice(index,1)
+    localStorage.setItem("cartData",JSON.stringify(cartData))
+    window.location.reload()
+}
+
+</script>

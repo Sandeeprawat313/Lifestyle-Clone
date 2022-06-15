@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        #maindiv{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 15px;
+            width: 95%;
+            margin: auto;
+        }
+        #maindiv>div:hover{
+            width: 110%;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        #maindiv>div{
+            padding: 10px;
+        }
+        #maindiv img{
+            width: 100%;
+            height: 300px;
+        }
+        #maindiv button{
+            background-color:#faa61b;
+            width: 100%;
+            height: 45px;
+            border: none;
+            margin-top: 10px;
+        }
+        #function{
+            display: flex;
+            margin-top: 50px;
+            margin-left:2.5%;
+        }
+        #maindiv>div>div{
+            display: flex;
+            gap:5px;
+            margin-top: 10px;
+        }
+
+
+        @media all and (min-width:500px) and (max-width:650px){
+            #maindiv{
+            grid-template-columns: repeat(3,1fr);
+            gap: 10px;
+        }
+        }
+        @media all and (min-width:350px) and (max-width:500px){
+            #maindiv{
+            grid-template-columns: repeat(2,1fr);
+            gap: 5px;
+        }
+        }
+        @media all and (min-width:50px) and (max-width:350px){
+            #maindiv{
+            grid-template-columns: repeat(1,1fr);
+            width: 80%;
+        }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="function">
+        <select id="Categ">
+            <option value="">Filter items by category</option>
+            <option value="cothing">Cothing</option>
+            <option value="footwere">Footwere</option>
+            <option value="Accessories">Accessories</option>
+        </select>
+        <select id="sortby">
+            <option value="">Sort Items by</option>
+            <option value="Alphabetically-AtoZ">Alphabetically-AtoZ</option>
+            <option value="Alphabetically-ZtoA">Alphabetically-ZtoA</option>
+            <option value="Price low to high">Price low to high</option>
+            <option value="Price high to low">Price high to low</option>
+        </select>
+    </div>
+
+    <div id="maindiv"></div>
+</body>
+</html>
+<script>
+
+// take product data in the form of array of objects
+let productData =[
+
+{image:"https://rukminim1.flixcart.com/image/412/494/kflftzk0-0/shirt/i/o/t/s-hlsh009221-navy-blue-white-highlander-original-imafwyezpnnnrucd.jpeg?q=50",
+rupeesig:"₹",
+price:297,
+productName:"Men Regular Fit Printed shirt",
+categories:"cothing",
+Productid: "C112345",
+qty:1
+},
+{  image:" https://rukminim1.flixcart.com/image/412/494/kylvr0w0/shirt/n/u/a/m-ksb258-fs-massive-killer-original-imagasvyd7fywtkg.jpeg?q=50",
+rupeesig:"₹",
+price:649,
+productName:"Spread Collar Casual Shirt",
+categories:"cothing",
+Productid: "C112346",
+qty:1
+},
+{  image:" https://rukminim1.flixcart.com/image/756/907/l1xwqkw0/shirt/y/o/1/m-ksb261-fs-casement-k071fsslndr-sky-killer-original-imagdeegw5wggx3r.jpeg?q=50",
+rupeesig:"₹",
+price:449,
+productName:" Checkered Spread Collar Casual Shirt",
+categories:"cothing",
+Productid: "C112347",
+qty:1
+},
+{  image:" https://rukminim1.flixcart.com/image/756/907/ku1k4280/shirt/e/r/1/m-ksb215-fs-charles-killer-original-imag79gehepszfxj.jpeg?q=50",
+rupeesig:"₹",
+price:897,
+productName:" Fit Checkered Casual Shirt",
+categories:"cothing",
+Productid: "C112347",
+qty:1
+},
+{image:" https://rukminim1.flixcart.com/image/756/907/kwzap3k0/t-shirt/n/l/p/m-ntpnkr9107f3ss-nautica-original-imag9j8dmjestxwq.jpeg?q=50",
+rupeesig:"₹",
+price:1399,
+productName:" Polo Neck Multicolour T-Shirt",
+categories:"cothing",
+Productid:"A112356",
+qty:1},
+{image:" https://rukminim1.flixcart.com/image/756/907/kyag87k0/short/z/k/6/40-13794548-nautica-original-imagajrzbhm5hb3z.jpeg?q=50",
+rupeesig:"₹",
+price:1100,
+productName:"Solid Men Red Chino Shorts",
+categories:"cothing",
+Productid:"A112357",
+qty:1},
+{image:" https://rukminim1.flixcart.com/image/756/907/l1fc0i80/jean/g/d/u/32-pm206767e603-pepe-jeans-original-imagczr29fneur48.jpeg?q=50",
+rupeesig:"₹",
+price:900,
+productName:"Slim Men Blue Jeans",
+categories:"cothing",
+Productid:"A112358",
+qty:1},
+{image:" https://rukminim1.flixcart.com/image/756/907/l3rmzrk0/jean/l/4/6/32-a0217-0005-levi-s-original-imaget8kh4n7gu8t.jpeg?q=50",
+rupeesig:"₹",
+price:800,
+productName:"Slim Men Blue Jeans",
+categories:"cothing",
+Productid:"A112359",
+qty:1},
+{image:" https://rukminim1.flixcart.com/image/756/907/l2tcfbk0/jean/b/l/u/32-23677-0238-levi-s-original-image2k3prpjrpu7.jpeg?q=50",
+rupeesig:"₹",
+price:650,
+productName:"Slim Men Blue Jeans",
+categories:"cothing",
+Productid:"A112360",
+qty:1},
+{image:"https://rukminim1.flixcart.com/image/756/907/kkfrjww0/short/i/e/w/l-50061asp-01-van-heusen-original-imafzsaemffuyxq7.jpeg?q=50",
+rupeesig:"₹",
+price:450,
+productName:"Red Bermuda Shorts",
+categories:"cothing",
+Productid:"A112361",
+qty:1},
+{image:"https://rukminim1.flixcart.com/image/756/907/k70spzk0/short/t/y/2/30-hlv8000130-highlander-original-imafpchthnhf6tzb.jpeg?q=50",
+rupeesig:"₹",
+price:350,
+productName:"Blue Chino Shorts",
+categories:"cothing",
+Productid:"A112362",
+qty:1},
+{image:" https://rukminim1.flixcart.com/image/756/907/kctf0cw0/short/g/a/a/32-yrte11-kingone-original-imaftv6v8tpxgr22.jpeg?q=50",
+rupeesig:"₹",
+price:299,
+productName:"Green Bermuda Shorts",
+categories:"cothing",
+Productid:"A112363",
+qty:1},
+
+
+
+
+
+{  image:" https://rukminim1.flixcart.com/image/756/907/kmz7qfk0/watch/1/k/x/xn-2215-analog-digital-black-pu-strap-pack-of-2-watch-xn-xeezos-original-imagfr82twbguacn.jpeg?q=50",
+rupeesig:"₹",
+price:2000,
+productName:" Analog Watch - For Men",
+categories:"Accessories",
+Productid: "f112348",
+qty:1
+},
+{  image:" https://rukminim1.flixcart.com/image/756/907/kc29n680/sunglass/z/0/v/medium-rnd-cup-sil-p-blk-insh-original-imaft9wtfrq3ggyg.jpeg?q=50",
+rupeesig:"₹",
+price:397,
+productName:" UV Round Sunglasses",
+categories:"Accessories",
+Productid: "f112349",
+qty:1
+},
+{  image:" https://rukminim1.flixcart.com/image/756/907/kkfrjww0/watch/k/g/u/anlg-450-blue-brwn-dd-analogue-original-imafzsknpjt7q8aw.jpeg?q=50",
+rupeesig:"₹",
+price:497,
+productName:"All Blue Boys Series",
+categories:"Accessories",
+Productid: "f112350",
+qty:1
+},
+{  image:" https://rukminim1.flixcart.com/image/412/494/kog30y80/belt/s/k/p/30-reversible-belt-lpblgrgff202036-reversible-belt-louis-original-imag2wqmamvdhne2.jpeg?q=50",
+rupeesig:"₹",
+price:697,
+productName:"Leather Reversible Belt",
+categories:"Accessories",
+Productid: "f112351",
+qty:1
+},
+{  image:"https://rukminim1.flixcart.com/image/756/907/k7nnrm80/wallet-card-wallet/e/x/w/vihaan-th-vihaangcw08-wallet-tommy-hilfiger-original-imafptu3yhh2gbdk.jpeg?q=50",
+rupeesig:"₹",
+price:997,
+productName:"Leather Wallet - Regular Size",
+categories:"Accessories",
+Productid: "A112352",
+qty:1
+},
+{  image:"https://rukminim1.flixcart.com/image/756/907/kmp7ngw0/watch/1/y/v/2001102-lacoste-original-imagfjdddq3uzzrm.jpeg?q=50",
+rupeesig:"₹",
+price:197,
+productName:"Analog Watch - For Women",
+categories:"Accessories",
+Productid: "A112353",
+qty:1
+},
+{  image:"https://rukminim1.flixcart.com/image/756/907/kjswia80/watch/s/d/q/new-letest-queen-magnet-watch-for-girls-and-woman-khanderaya-original-imafzagydf3cxwvd.jpeg?q=50",
+rupeesig:"₹",
+price:297,
+productName:"Magnate Analog Watch",
+categories:"Accessories",
+Productid: "A112354",
+qty:1
+},
+{  image:"https://rukminim1.flixcart.com/image/756/907/kk5rgy80/sunglass/3/r/v/medium-m-r126-shahs-collection-original-imafzkqdhhbwvgfh.jpeg?q=50",
+rupeesig:"₹",
+price:327,
+productName:"UV Protection Wayfarer Sunglasses",
+categories:"Accessories",
+Productid: "A112355",
+qty:1
+},
+{  image:"https://rukminim1.flixcart.com/image/612/612/k4k7f680/card-holder/b/b/5/credit-card-holder-pop-up-blocking-security-slim-wallet-case-for-original-imafmxy2f3ebg6vj.jpeg?q=70",
+rupeesig:"₹",
+price:120,
+productName:"RFID Credit Card Holder",
+categories:"Accessories",
+Productid: "A112356",
+qty:1
+},
+{image:"https://rukminim1.flixcart.com/image/412/494/l407mvk0/sandal/z/r/y/-original-imagfyy4h7qcrsfa.jpeg?q=50",
+rupeesig:"₹",
+price:1399,
+productName:"Ralen Black Clogs Sandal",
+categories:"footwere",
+Productid:"A112380",
+qty:1},
+{image:"https://rukminim1.flixcart.com/image/756/907/l432ikw0/sandal/o/b/n/-original-imagf25cfyvkppya.jpeg?q=50",
+rupeesig:"₹",
+price:1100,
+productName:"Men Brown Clogs Sandal",
+categories:"footwere",
+Productid:"A112381",
+qty:1},
+{image:"https://rukminim1.flixcart.com/image/756/907/kyhlfgw0/shoe/r/v/o/9-m7-22509-zebra-l-grey-orange-m7-by-metronaut-zebra-l-grey-original-imagapfhttqthztz.jpeg?q=50",
+rupeesig:"₹",
+price:900,
+productName:"L.Grey Orange Running Shoes",
+categories:"footwere",
+Productid:"A112382",
+qty:1},
+{image:"https://rukminim1.flixcart.com/image/756/907/kybvo280/shoe/3/n/k/8-champ-grey-8-clymb-grey-original-imagah9rzhhcjb5w.jpeg?q=50",
+rupeesig:"₹",
+price:800,
+productName:"Running Shoes For Men",
+categories:"footwere",
+Productid:"A112383",
+qty:1},
+{image:"https://rukminim1.flixcart.com/image/756/907/ki4w0i80-0/slipper-flip-flop/c/p/x/8-bd-grass-colors-aaradhaya-green-original-imafxzpsgapb4feu.jpeg?q=50",
+rupeesig:"₹",
+price:650,
+productName:"Slippers  (Green 6)",
+categories:"footwere",
+Productid:"A112384",
+qty:1},
+{image:"https://rukminim1.flixcart.com/image/756/907/kcm9t3k0/slipper-flip-flop/j/m/d/7-f42-lekstar-brown-original-imaftpn97rcug5gc.jpeg?q=50",
+rupeesig:"₹",
+price:450,
+productName:"Flip Flops  (Multicolor 7)",
+categories:"footwere",
+Productid:"A112385",
+qty:1},
+{image:"https://rukminim1.flixcart.com/image/756/907/klicfww0/shoe/o/o/7/6-821-6373-40-bata-black-original-imagymcjut45fzhe.jpeg?q=50",
+rupeesig:"₹",
+price:350,
+productName:"Shoes Lace Up For Men",
+categories:"footwere",
+Productid:"A112386",
+qty:1},
+
+]
+
+
+
+
+
+
+
+
+//call the display function using the above data as parameter
+displyData(productData)
+
+// display data using JS
+function displyData(productData){
+document.querySelector("#maindiv").innerHTML=""
+productData.forEach(function(ele){
+let box = document.createElement("div")
+document.querySelector("#maindiv").append(box)
+let image = document.createElement("img")
+image.setAttribute("src",ele.image)
+let rupeesig = document.createElement("p")
+rupeesig.innerText=ele.rupeesig
+let price = document.createElement("p")
+price.innerText=ele.price
+
+let inrbox = document.createElement("div")
+inrbox.append(rupeesig,price)
+
+let name = document.createElement("p")
+name.innerText=ele.productName
+let cat = document.createElement("p")
+cat.innerText=ele.categories
+let btn = document.createElement("button")
+btn.innerText="ADD TO BASKET"
+btn.addEventListener("click",function(){
+    if(checkCartItem(ele.Productid)==true){
+        cartData.push(ele)
+        localStorage.setItem("cartData",JSON.stringify(cartData))
+        alert("Product Added to the cart")
+    }
+    else{
+        alert("Product alredy in the cart")
+    }
+})
+box.append(image,name,inrbox,btn)
+})
+}
+
+// filter function
+document.querySelector("#Categ").addEventListener("change",function(){
+    filterData(Categ.value)
+})
+filterData("")//calling empty data on refresh
+function filterData(categories){
+   let filtered = productData.filter(function(ele){
+        return ele.categories==categories
+    })
+    if(categories==""){
+    displyData(productData)
+    sortFunc(productData)
+    }
+    else{displyData(filtered)
+        sortFunc(filtered)}
+}
+
+// sorting function
+function sortFunc(filtered){
+    document.querySelector("#sortby").addEventListener("change",function(){ 
+    if(sortby.value ==="Price low to high"){
+        let sortData = filtered.sort(function(a,b){
+        return a.price-b.price
+    })
+    displyData(sortData)
+    console.log(sortData)
+    
+    }
+    if(sortby.value == "Price high to low"){
+        let sortData = filtered.sort(function(a,b){
+        return b.price-a.price
+    })
+    displyData(sortData)
+   
+    }
+    if(sortby.value == "Alphabetically-AtoZ"){
+        let sortData = filtered.sort(function(a,b){
+        if(a.productName>b.productName) return 1
+        if(a.productName<b.productName) return -1
+        return 0
+    })
+    displyData(sortData)
+    }
+    if(sortby.value == "Alphabetically-ZtoA"){
+        let sortData = filtered.sort(function(a,b){
+        if(a.productName>b.productName) return -1
+        if(a.productName<b.productName) return 1
+        return 0
+    })
+    displyData(sortData)
+    }
+})
+}
+//add to cart function
+let cartData = JSON.parse(localStorage.getItem("cartData"))||[]
+
+function checkCartItem(Productid){
+let filter = cartData.filter(function(ele){
+  return ele.Productid==Productid
+})
+if(filter.length>0){return false}
+else{return true}
+}
+</script>
