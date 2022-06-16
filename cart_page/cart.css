@@ -44,6 +44,7 @@ button {
 .cart {
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .cart>div:first-child {
@@ -310,7 +311,7 @@ button {
     width: 12px;
     height: 12px;
     display: inline-block;
-    background: url() no-repeat -625px -110px;
+    background: url("") no-repeat;
     margin-right: 4px;
     vertical-align: middle;
     border: 1px solid black;
@@ -336,4 +337,74 @@ button {
     color: green;
     font-weight: bold;
 
+}
+
+
+/* --------stalying for add to favourite part */
+#cart_content{
+    position: relative;
+    bottom: 0;
+}
+.fav_item_main_container{
+    position: absolute;
+    top: 100%;
+}
+.fav_main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 70px;
+    /* background-color: teal; */
+    /* padding-top: 30px; */
+    /* border: 1px solid saddlebrown ; */
+}
+.fav_main>div:nth-child(even){
+    margin: 0 13px;
+}
+.fav_main::before{
+    content: "Add from favourite";
+    position: absolute;
+    /* top: -15px; */
+    margin-top: -35px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.fav_div_container{
+    /* border: 1px solid black; */
+    width: 145px;
+    height: 300px;
+    /* margin: auto; */
+    /* display: flex; */
+    /* height: 100px; */
+}
+.fav_img_div{
+    width: 140px;
+    height: 150px;
+}
+.fav_img_div img{
+    /* width: 100%; */
+    object-fit: cover;
+}
+.fav_main button{
+    color: #faa619;
+    /* margin: 0; */
+    width: 100%;
+    border: none;
+    border: 1px solid #faa619;
+    background-color: white;
+    /* display: block; */
+    /* margin: auto; */
+    padding: 14px 0;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 15px;
+}
+.fav_main p{
+    /* padding-left: 5%; */
+    /* line-height: 21px; */
+}
+.product_name{
+    font-size: 15px;
+    line-height: 17px;
 }

@@ -1,5 +1,4 @@
 
-// console.log('hi')
 
 let data =[{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010459248-Multicolour-1000010459248_01-2100.jpg",
 rupeesig:"₹",
@@ -7,6 +6,34 @@ price:297,
 productName:"BOSSINI Women Solid Round Neck Top",
 categories:"cothing",
 Productid: "C12345"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
+rupeesig:"₹",
+price:649,
+productName:"BOSSINI Women Round Neck Lace top",
+categories:"cothing",
+Productid: "C12346"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
+rupeesig:"₹",
+price:649,
+productName:"BOSSINI Women Round Neck Lace top",
+categories:"cothing",
+Productid: "C12346"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
+rupeesig:"₹",
+price:649,
+productName:"BOSSINI Women Round Neck Lace top",
+categories:"cothing",
+Productid: "C12346"
+},
+{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
+rupeesig:"₹",
+price:649,
+productName:"BOSSINI Women Round Neck Lace top",
+categories:"cothing",
+Productid: "C12346"
 },
 {  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
 rupeesig:"₹",
@@ -35,6 +62,7 @@ displayCart(data);
 
 
 function displayCart(data){
+    document.getElementById('cart_content').innerHTML ="";
     let mrp =0;
     let offerDiscount =0;
     data.forEach(function(ele,index){
@@ -72,7 +100,7 @@ function displayCart(data){
     mtf.innerText ="Move to favourite";
     // adding event listner for move to favourite element;
     mtf.addEventListener('click',function(){
-        moveToFavourite(index,ele);
+        moveToFavourite(ele,index);
     })
 delRem_div.append(remove,mtf);
 cartDiv.append(delRem_div);
@@ -96,15 +124,53 @@ function displayPrices(total,discount){
 
 function removeFromCart(index){
     console.log(index);
+    data.splice(index,1);
+    displayCart(data);
 }
 
 // -------------- move to favourite functionalities ----------------
-function moveToFavourite(index,element){
-    console.log(element);
+let addToFav = JSON.parse(localStorage.getItem('favDataArray')) || [];
+function moveToFavourite(element,index){
+    // console.log(element);
+    addToFav.push(element);
+    localStorage.setItem("favDataArray",JSON.stringify(addToFav));
+    displayFav();
+
 }
 
 
 
+function displayFav(){
+    document.querySelector('.fav_item_main_container').innerHTML ="";
+
+    let main = document.createElement('div');
+    // main.innerHTML =""
+// main.innerText ="hi"
+main.setAttribute('class',"fav_main");
+
+   addToFav.forEach(function(ele,index){
+
+    let actualPrice =ele.price -(ele.price*0.2);
+    actualPrice =Math.floor(actualPrice);
+    let saved = ele.price - actualPrice ;
+
+    let fav_div =document.createElement('div');
+    fav_div.setAttribute('class',"fav_div_container")
+    fav_div.innerHTML+=`<div>
+    <img class="fav_img_div" src="${ele.image}" alt="">
+    </div>
+    <div>
+    <p><span class ="span1"> ${ele.price}  ₹ </span><span class ="span2"> ${actualPrice} ₹ </span></p>
+        <p class ="product_name">${ele.productName}</p>
+    </div>`
+    let btn = document.createElement('button');
+    btn.innerText ="Add to basket";
+    fav_div.append(btn);
+main.append(fav_div)
+document.querySelector('.fav_item_main_container').append(main);
+
+   })
+}
 
 
 
