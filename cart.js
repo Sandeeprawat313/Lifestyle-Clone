@@ -215,7 +215,7 @@ checkout_btn.addEventListener('click',goToPaymentPage);
  function goToPaymentPage(){
     let final_payment = document.querySelector('.total_payment').innerText
     localStorage.setItem('total_payment',final_payment);
-    window.location.href = "payment/payments.html";
+    window.location.href = "payments.html";
     
 
  }
