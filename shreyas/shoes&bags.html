@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHOES AND BAGS PAGE</title>
+
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <div id="sorting">
+      <select id="Categories">
+        <option value="All">Filter items by category</option>
+        <option value="clothing">Clothing</option>
+        <option value="footwear">Footwear</option>
+        <option value="accessories">Accessories</option>
+      </select>
+      <select id="sortby">
+        <option value="">Sort Items by</option>
+        <option value="Alphabetically-AtoZ">Alphabetically-AtoZ</option>
+        <option value="Alphabetically-ZtoA">Alphabetically-ZtoA</option>
+        <option value="Price low to high">Price low to high</option>
+        <option value="Price high to low">Price high to low</option>
+      </select>
+    </div>
+
+    <div id="main"></div>
+  </body>
+</html>
+
+<script>
+  let productData = [
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010400817-Black-1000010400817_01-2100.jpg",
+      symbol: "₹",
+      price: 2978,
+      itemName: "CODE Women Textured Loafers",
+      categories: "loafers",
+      ProductID: "C112345",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010711484-NAVY-1000010711484_01-2100.jpg",
+      symbol: "₹",
+      price: 6249,
+      itemName: "SKECHERS Women Textured Slip-On Sneakers",
+      categories: "sneakers",
+      ProductID: "C112346",
+      gender: "male",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010934620-BLACK-1000010934620_01-2100.jpg",
+      symbol: "₹",
+      price: 449,
+      itemName: "GINGER Women Solid Block Heels",
+      categories: "heels",
+      ProductID: "C112347",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010339513-White-1000010339513_01-2100.jpg",
+      symbol: "₹",
+      price: 897,
+      itemName: "FORCA Men Colourblocked Lace-Up Casual Sneakers",
+      categories: "sneakers",
+      ProductID: "C112347",
+      qty: 1,
+      gender: "male",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010236100-Green-1000010236100_01-2100.jpg",
+      symbol: "₹",
+      price: 1399,
+      itemName: " FORCA Men Textured Sliders",
+      categories: "sliders",
+      gender: "male",
+      ProductID: "A112356",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010845649-Black-1000010845649_01-2100.jpg",
+      symbol: "₹",
+      price: 1100,
+      itemName: "CODE Men Textured Loafers",
+      categories: "loafers",
+      ProductID: "A112357",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010867059-Blue-1000010867059_01-2100.jpg",
+      symbol: "₹",
+      price: 900,
+      itemName: "FORCA Men Solid Lace-Up Shoes",
+      categories: "sneakers",
+      ProductID: "A112358",
+      gender: "male",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010873370-Pink-1000010873370_06-2100.jpg",
+      symbol: "₹",
+      price: 800,
+      itemName: "GINGER Women Printed Lace-Up Shoes",
+      categories: "sneakers",
+      ProductID: "A112359",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010706453-1000010706452_01-2100.jpg",
+      symbol: "₹",
+      price: 650,
+      itemName: "WILDCRAFT Textured Zip Closure Casual Backpack",
+      categories: "bags",
+      ProductID: "A112360",
+      gender: "male",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010904327-Blue-1000010904327_01-2100.jpg",
+      symbol: "₹",
+      price: 450,
+      itemName: "FORCA Men Colorblocked Lace-Up Shoes",
+      categories: "sneakers",
+      ProductID: "A112361",
+      gender: "male",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010948833-Brown-1000010948833_01-2100.jpg",
+      symbol: "₹",
+      price: 350,
+      itemName: "LOUIS PHILIPPE Men Solid Loafers",
+      gender: "male",
+      categories: "loafers",
+      ProductID: "A112362",
+      qty: 1,
+    },
+    {
+      image:
+        " https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010491210-Green-1000010491210_02-2100.jpg",
+      symbol: "₹",
+      price: 299,
+      gender: "female",
+      itemName: "GINGER Women Textured Ankle-Strap Heels",
+      categories: "heels",
+      ProductID: "A112363",
+      qty: 1,
+    },
+
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010514537-1000010514534_01-2100.jpg",
+      symbol: "₹",
+      price: 2000,
+      itemName: "GINGER Women Solid Handheld Bag",
+      categories: "bags",
+      ProductID: "f112348",
+      gender: "female",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010908721-Pink-1000010908721_01-2100.jpg ",
+      symbol: "₹",
+      price: 397,
+      gender: "female",
+      itemName: "FAME FOREVER Girls Textured Lace-Up Casual Shoes ",
+      categories: "sneakers",
+      ProductID: "f112349",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010933645-Black-1000010933645_01-2100.jpg",
+      symbol: "₹",
+      price: 497,
+      gender: "female",
+      itemName: "GINGER Women Solid Sliders",
+      categories: "sliders",
+      ProductID: "f112350",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010338495-Brown-1000010338495_01-2100.jpg",
+      symbol: "₹",
+      price: 697,
+      gender: "male",
+      itemName: "CODE Men Solid Loafers ",
+      categories: "loafers",
+      ProductID: "f112351",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011552425-1000011552424_01-2100.jpg",
+      symbol: "₹",
+      price: 997,
+      itemName: "SKY BAGS Laptop bag for men",
+      gender: "male",
+      categories: "bags",
+      ProductID: "A112352",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010696399-Black-1000010696399_01-2100.jpg",
+      symbol: "₹",
+      price: 197,
+      itemName: "FILA Men Solid Slip-On Casual Shoes",
+      categories: "sneakers",
+      ProductID: "A112353",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010364292-1000010364291_01-2100.jpg",
+      symbol: "₹",
+      price: 297,
+      itemName: "CODE Women Solid Clutch with Detachable Strap",
+      categories: "bags",
+      ProductID: "A112354",
+      gender: "female",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010685415-Gold-1000010685415_02-2100.jpg",
+      symbol: "₹",
+      price: 327,
+      itemName: "CATWALK Women Textured Block Heels",
+      categories: "heels",
+      ProductID: "A112355",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000008434298-1000008434297_01-2100.jpg",
+      symbol: "₹",
+      price: 120,
+      itemName: "CODE Textured Handbag with Rolled Handles",
+      categories: "bags",
+      ProductID: "A112356",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010343113-Pink-1000010343113_02-2100.jpg",
+      symbol: "₹",
+      price: 1399,
+      itemName: "FAME FOREVER Girls Strap Sandals",
+      categories: "heels",
+      ProductID: "A112380",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010860566-White-1000010860566_01-2100.jpg",
+      symbol: "₹",
+      price: 1100,
+      itemName: "SKECHERS Kids Mesh Velcro Strap Casual Shoes",
+      categories: "sneakers",
+      ProductID: "A112381",
+      qty: 1,
+      gender: "male",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010672873-Black-Black-1000010672873-1_01-2100.jpg",
+      symbol: "₹",
+      price: 900,
+      itemName: "PUMA Boys Solid Lace-Up Sneakers",
+      categories: "sneakers",
+      ProductID: "A112382",
+      qty: 1,
+      gender: "male",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000009888137-Pink-1000009888137-25082021_02-2100.jpg",
+      symbol: "₹",
+      price: 800,
+      itemName: "FAME FOREVER Girls Printed Casual Shoes",
+      categories: "sneakers",
+      ProductID: "A112383",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010178832-Blue-1000010178832-130122_02-2100.jpg",
+      symbol: "₹",
+      price: 650,
+      itemName: "SKECHERS Boys Solid Clogs",
+      categories: "sliders",
+      ProductID: "A112384",
+      qty: 1,
+      gender: "male",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010343777-Pink-1000010343777_01-2100.jpg",
+      symbol: "₹",
+      price: 450,
+      itemName: "FAME FOREVER Girls Printed Slip-On Shoes",
+      categories: "sliders",
+      ProductID: "A112385",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010638130-Blue-1000010638130_01-2100.jpg",
+      symbol: "₹",
+      price: 350,
+      itemName: "FAME FOREVER Boys Printed  Sliders",
+      categories: "sliders",
+      ProductID: "A112386",
+      qty: 1,
+      gender: "male",
+    },
+  ];
+
+  let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+  displayData(productData);
+  function displayData() {
+    document.querySelector("#main").innerHTML = "";
+
+    productData.forEach(function (element) {
+      let content = document.createElement("div");
+      let image = document.createElement("img");
+      image.src = element.image;
+      let symbol = document.createElement("p");
+      symbol.innerText = element.symbol;
+      let price = document.createElement("p");
+      price.innerText = element.price;
+      let priceBox = document.createElement("div");
+      priceBox.append(symbol, price);
+      let itemName = document.createElement("p");
+      itemName.innerText = element.itemName;
+      let categories = document.createElement("p");
+      categories.innerText = element.categories;
+      let btn = document.createElement("button");
+      btn.innerText = "ADD TO CART";
+      btn.addEventListener("click", function () {
+        if (checkCartItem(element.ProductID) == true) {
+          cartData.push(element);
+          localStorage.setItem("cartData", JSON.stringify(cartData));
+          alert("Product Added to the cart");
+        } else {
+          alert("Product already in the cart");
+        }
+      });
+
+      content.append(image, itemName, priceBox, btn);
+      document.querySelector("#main").append(content);
+    });
+  }
+  //add to cart function
+  function checkCartItem(ProductID) {
+    let filter = cartData.filter(function (element) {
+      return element.ProductID == ProductID;
+    });
+    if (filter.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  // filter func
+
+  let filter = document.querySelector("#Categories");
+  filter.addEventListener("change", function () {
+    if (filter.value === "All") {
+      displayData(productData);
+    } else {
+      let filtered = productData.filter(function (element) {
+        return element.categories === filter.value;
+      });
+      displayData(filtered);
+      console.log(filtered);
+    }
+  });
+
+  // filter func
+
+  function sortFunc(filtered) {
+    document.querySelector("#sortby").addEventListener("change", function () {
+      if (sortby.value === "Price low to high") {
+        let sortData = filtered.sort(function (a, b) {
+          return a.price - b.price;
+        });
+        displayData(sortData);
+        console.log(sortData);
+      }
+      if (sortby.value == "Price high to low") {
+        let sortData = filtered.sort(function (a, b) {
+          return b.price - a.price;
+        });
+        displayData(sortData);
+      }
+      if (sortby.value == "Alphabetically-AtoZ") {
+        let sortData = filtered.sort(function (a, b) {
+          if (a.itemName > b.itemName) return 1;
+          if (a.itemName < b.itemName) return -1;
+          return 0;
+        });
+        displayData(sortData);
+      }
+      if (sortby.value == "Alphabetically-ZtoA") {
+        let sortData = filtered.sort(function (a, b) {
+          if (a.itemName > b.itemName) return -1;
+          if (a.itemName < b.itemName) return 1;
+          return 0;
+        });
+        displayData(sortData);
+      }
+    });
+  }
+</script>

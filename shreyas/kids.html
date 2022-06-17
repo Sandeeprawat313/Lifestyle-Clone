@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KIDS PAGE</title>
+
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <div id="sorting">
+      <select id="Categ">
+        <option value="">Filter items by category</option>
+        <option value="clothing">Clothing</option>
+        <option value="footwear">Footwear</option>
+        <option value="accessories">Accessories</option>
+      </select>
+      <select id="sortby">
+        <option value="">Sort Items by</option>
+        <option value="Alphabetically-AtoZ">Alphabetically-AtoZ</option>
+        <option value="Alphabetically-ZtoA">Alphabetically-ZtoA</option>
+        <option value="Price low to high">Price low to high</option>
+        <option value="Price high to low">Price high to low</option>
+      </select>
+    </div>
+
+    <div id="main"></div>
+  </body>
+</html>
+
+<script>
+  let productData = [
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010955112-Yellow-Yellow-1000010955112_01-2100.jpg",
+      symbol: "₹",
+      price: 297,
+      itemName: "FAME FOREVER Girls Printed Waist A-line Dress",
+      categories: "clothing",
+      ProductID: "C112345",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000008762685-Red-Red-1000008762685_01-2100.jpg",
+      symbol: "₹",
+      price: 649,
+      itemName: "UNITED COLORS OF BENETTON Solid  Casual Shirt",
+      categories: "clothing",
+      ProductID: "C112346",
+      gender: "male",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010997763-Pink-Pink-1000010997763_01-2100.jpg",
+      symbol: "₹",
+      price: 449,
+      itemName: "JUNIORS Graphic Print Crew Neck T-shirt",
+      categories: "clothing",
+      ProductID: "C112347",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011407578-Grey-1000011407578_01-2100.jpg",
+      symbol: "₹",
+      price: 897,
+      itemName: "FAME FOREVER Boys Printed Shorts",
+      categories: "clothing",
+      ProductID: "C112347",
+      qty: 1,
+      gender: "male",
+    },
+    {
+      image:
+        " https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000009907692-Yellow-Yellow-1000009907692_01-2100.jpg",
+      symbol: "₹",
+      price: 1399,
+      itemName: " FAME FOREVER KIDS Boys Printed Crew Neck T-shirt",
+      categories: "clothing",
+      gender: "male",
+      ProductID: "A112356",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010997539-Pink-Pink-1000010997539-020522_01-2100.jpg",
+      symbol: "₹",
+      price: 1100,
+      itemName: "FAME FOREVER Typographic Print Crew Neck T-shirt",
+      categories: "clothing",
+      ProductID: "A112357",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011347127-Green-Mint-1000011347127_01-2100.jpg",
+      symbol: "₹",
+      price: 900,
+      itemName: "FAME FOREVER Boys Printed T-shirt",
+      categories: "clothing",
+      ProductID: "A112358",
+      gender: "male",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011347094-Black-Black-1000011347094_01-2100.jpg",
+      symbol: "₹",
+      price: 800,
+      itemName: "FAME FOREVER  Printed Crew Neck T-shirt",
+      categories: "clothing",
+      ProductID: "A112359",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010994326-Blue-Petrol-1000010994326_01-2100.jpg",
+      symbol: "₹",
+      price: 650,
+      itemName: "JUNIORS Boys Solid Regular Fit Polo Neck T-shirt",
+      categories: "clothing",
+      ProductID: "A112360",
+      gender: "male",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011347160-Black-Black-1000011347160_01-2100.jpg",
+      symbol: "₹",
+      price: 450,
+      itemName: "FAME FOREVER Boys Printed Round Neck T-shirt",
+      categories: "clothing",
+      ProductID: "A112361",
+      gender: "male",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011347171-Red-Coral-1000011347171_01-2100.jpg",
+      symbol: "₹",
+      price: 350,
+      itemName: "FAME FOREVER Boys Printed Short Sleeve T-shirt",
+      gender: "male",
+      categories: "clothing",
+      ProductID: "A112362",
+      qty: 1,
+    },
+    {
+      image:
+        " https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011347138-Yellow-Mustard-1000011347138_01-2100.jpg",
+      symbol: "₹",
+      price: 299,
+      gender: "female",
+      itemName: "FAME FOREVER  Printed T-shirt",
+      categories: "clothing",
+      ProductID: "A112363",
+      qty: 1,
+    },
+
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010853663-Yellow-1000010853663_01-2100.jpg",
+      symbol: "₹",
+      price: 2000,
+      itemName: "GINGER Girls Textured Slim Casual Belt",
+      categories: "Accessories",
+      ProductID: "f112348",
+      gender: "male",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010702006-1000010702005_03-2100.jpg ",
+      symbol: "₹",
+      price: 397,
+      gender: "female",
+      itemName: "Rabbit Bunny Ear with fur Hairband ",
+      categories: "Accessories",
+      ProductID: "f112349",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010714844-1000010714843_01-2100.jpg",
+      symbol: "₹",
+      price: 497,
+      gender: "female",
+      itemName: "Fabric Minnie Cartoons Soft Toy Bag Backpack",
+      categories: "Accessories",
+      ProductID: "f112350",
+      qty: 1,
+    },
+    {
+      image:
+        "https://rukminim1.flixcart.com/image/416/416/l4ei1e80/action-figure/b/0/c/3-m16-laser-toy-action-riffle-gun-with-rotating-flash-light-game-original-imagfbak9fyndhy9.jpeg?q=70",
+      symbol: "₹",
+      price: 697,
+      gender: "male",
+      itemName: "Wishkey M16 Laser Toy Action Riffle Gun ",
+      categories: "Accessories",
+      ProductID: "f112351",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011552425-1000011552424_01-2100.jpg",
+      symbol: "₹",
+      price: 997,
+      itemName: "SKY BAGS for kids",
+      gender: "male",
+      categories: "Accessories",
+      ProductID: "A112352",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000008944320-1000008944319_01-2100.jpg",
+      symbol: "₹",
+      price: 197,
+      itemName: "FS MINI KLUB Girls Bow Accent Booties with Hairband",
+      categories: "Accessories",
+      ProductID: "A112353",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010968165-1000010968164_01-2100.jpg",
+      symbol: "₹",
+      price: 297,
+      itemName: "GINGER Girls Embellished Backpack",
+      categories: "Accessories",
+      ProductID: "A112354",
+      gender: "female",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011051933_01-2100.jpg",
+      symbol: "₹",
+      price: 327,
+      itemName: "UV Protection Wayfarer Sunglasses",
+      categories: "Accessories",
+      ProductID: "A112355",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010932313-1000010932312_01-2100.jpg",
+      symbol: "₹",
+      price: 120,
+      itemName: "TONIQ KIDS Girls Textured Gloves",
+      categories: "Accessories",
+      ProductID: "A112356",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010343113-Pink-1000010343113_02-2100.jpg",
+      symbol: "₹",
+      price: 1399,
+      itemName: "FAME FOREVER Girls Strap Sandals",
+      categories: "footwear",
+      ProductID: "A112380",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010860566-White-1000010860566_01-2100.jpg",
+      symbol: "₹",
+      price: 1100,
+      itemName: "SKECHERS Kids Mesh Velcro Strap Casual Shoes",
+      categories: "footwear",
+      ProductID: "A112381",
+      qty: 1,
+      gender: "male",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010672873-Black-Black-1000010672873-1_01-2100.jpg",
+      symbol: "₹",
+      price: 900,
+      itemName: "PUMA Boys Solid Lace-Up Sneakers",
+      categories: "footwear",
+      ProductID: "A112382",
+      qty: 1,
+      gender: "male",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000009888137-Pink-1000009888137-25082021_02-2100.jpg",
+      symbol: "₹",
+      price: 800,
+      itemName: "FAME FOREVER Girls Printed Casual Shoes",
+      categories: "footwear",
+      ProductID: "A112383",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010178832-Blue-1000010178832-130122_02-2100.jpg",
+      symbol: "₹",
+      price: 650,
+      itemName: "SKECHERS Boys Solid Clogs",
+      categories: "footwear",
+      ProductID: "A112384",
+      qty: 1,
+      gender: "male",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010343777-Pink-1000010343777_01-2100.jpg",
+      symbol: "₹",
+      price: 450,
+      itemName: "FAME FOREVER Girls Printed Slip-On Shoes",
+      categories: "footwear",
+      ProductID: "A112385",
+      qty: 1,
+      gender: "female",
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010638130-Blue-1000010638130_01-2100.jpg",
+      symbol: "₹",
+      price: 350,
+      itemName: "FAME FOREVER Boys Printed  Sliders",
+      categories: "footwear",
+      ProductID: "A112386",
+      qty: 1,
+      gender: "male",
+    },
+  ];
+
+  let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+  displayData(productData);
+  function displayData() {
+    document.querySelector("#main").innerHTML = "";
+
+    productData.forEach(function (element) {
+      let content = document.createElement("div");
+      let image = document.createElement("img");
+      image.src = element.image;
+      let symbol = document.createElement("p");
+      symbol.innerText = element.symbol;
+      let price = document.createElement("p");
+      price.innerText = element.price;
+      let priceBox = document.createElement("div");
+      priceBox.append(symbol, price);
+      let itemName = document.createElement("p");
+      itemName.innerText = element.itemName;
+      let categories = document.createElement("p");
+      categories.innerText = element.categories;
+      let btn = document.createElement("button");
+      btn.innerText = "ADD TO CART";
+      btn.addEventListener("click", function () {
+        if (checkCartItem(element.ProductID) == true) {
+          cartData.push(element);
+          localStorage.setItem("cartData", JSON.stringify(cartData));
+          alert("Product Added to the cart");
+        } else {
+          alert("Product already in the cart");
+        }
+      });
+
+      content.append(image, itemName, priceBox, btn);
+      document.querySelector("#main").append(content);
+    });
+  }
+  //add to cart function
+  function checkCartItem(ProductID) {
+    let filter = cartData.filter(function (element) {
+      return element.ProductID == ProductID;
+    });
+    if (filter.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  // filter func
+
+  // filter function
+  document.querySelector("#Categ").addEventListener("change", function () {
+    filterData(Categ.value);
+  });
+  filterData(""); //calling empty data on refresh
+  function filterData(categories) {
+    let filtered = productData.filter(function (ele) {
+      console.log(ele.categories, categories);
+      return ele.categories == categories;
+    });
+    if (categories == "") {
+      displayData(productData);
+      sortFunc(productData);
+    } else {
+      displayData(filtered);
+      sortFunc(filtered);
+    }
+  }
+
+  // sorting function
+  function sortFunc(filtered) {
+    document.querySelector("#sortby").addEventListener("change", function () {
+      if (sortby.value === "Price low to high") {
+        let sortData = filtered.sort(function (a, b) {
+          return a.price - b.price;
+        });
+        displayData(sortData);
+        console.log(sortData);
+      }
+      if (sortby.value == "Price high to low") {
+        let sortData = filtered.sort(function (a, b) {
+          return b.price - a.price;
+        });
+        displayData(sortData);
+      }
+      if (sortby.value == "Alphabetically-AtoZ") {
+        let sortData = filtered.sort(function (a, b) {
+          if (a.itemName > b.itemName) return 1;
+          if (a.itemName < b.itemName) return -1;
+          return 0;
+        });
+        displayData(sortData);
+      }
+      if (sortby.value == "Alphabetically-ZtoA") {
+        let sortData = filtered.sort(function (a, b) {
+          if (a.itemName > b.itemName) return -1;
+          if (a.itemName < b.itemName) return 1;
+          return 0;
+        });
+        displayData(sortData);
+      }
+    });
+  }
+</script>
