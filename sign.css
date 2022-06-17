@@ -8,16 +8,17 @@ h2{
     font-size: 30px;
     margin-bottom: 30px;
     color: blue;
+    text-align: center;
 }
 body{
     background-color: rgb(243, 243, 243);
 }
 div{
     background-color: white;
-    width: 40%;
+    width: 100%;
     margin: auto;
     padding: 10%;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   
 }
 input{
     width: 100%;
@@ -47,4 +48,9 @@ a{
 }
 form{
     margin-bottom: 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    width: 30%;
+    margin: auto;
+    margin-bottom: 30px;
 }
