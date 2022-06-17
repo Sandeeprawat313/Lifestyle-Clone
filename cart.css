@@ -361,7 +361,7 @@ button {
 .fav_main{
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     margin-top: 70px;
     /* background-color: teal; */
     /* padding-top: 30px; */

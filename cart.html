@@ -16,13 +16,74 @@
             font-weight: bold;
             color: lightgray;
         }
+        @media all and (min-width:200px) and (max-width:900px){
+            body{
+                box-sizing: border-box;
+                /* overflow: hidden; */
+            }
+            .headh1{
+                text-align: center;
+            }
+            .main_containe{
+                width: 90vw;
+            }
+            #cart_quantity{
+                text-align: center;
+                margin-top: -10px;
+                margin-bottom: -10px;
+                color: black;
+            }
+            .cart{
+                /* flex-direction: column; */
+                display: block;
+                /* padding: 50px; */
+                /* margin: 20px; */
+            }
+            .cart p{
+                font-size: 14px;
+                margin-bottom: -5px;
+            }
+            .cart>div:first-child{
+                width: 90%;
+            }
+            .cart_div{
+                height: auto;
+                width: 100%;
+            }
+            .cart>div:last-child{
+                width: 100%;
+            }
+            .fav_main{
+                flex-wrap: wrap;
+            }
+            .qty{
+                margin-left: 10px;
+            }
+            .price_container>div {
+                width: 90%;
+                margin: auto;
+            }
+            h3{
+                line-height: 18px;
+                font-size: 18px;
+            }
+            h5{
+                font-size: 14px;
+            }
+            h2{
+                font-size: 10px;
+                color: white;
+            }
+
+        }
+    
     </style>
 </head>
 
 <body>
     <div class="main_container">
         <div>
-            <h1>Your Shopping Basket</h1>
+            <h1 class="headh1">Your Shopping Basket</h1>
         </div>
         <h2 id="cart_quantity"></h2>
         <div class="cart">
@@ -78,7 +139,7 @@
                     <div>
                         <p>Shipping charge
                         </p>
-                        <p>0</p>
+                        <p>Free</p>
                     </div>
                     <div>
                         <p >Total</p>
