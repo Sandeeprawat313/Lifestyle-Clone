@@ -1,63 +1,10 @@
 
+let data = JSON.parse(localStorage.getItem('cartData')) || [];
+let addToFav = JSON.parse(localStorage.getItem('favDataArray')) || [];
 
-let data =[{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010459248-Multicolour-1000010459248_01-2100.jpg",
-rupeesig:"₹",
-price:297,
-productName:"BOSSINI Women Solid Round Neck Top",
-categories:"cothing",
-Productid: "C12345"
-},
-{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
-rupeesig:"₹",
-price:649,
-productName:"BOSSINI Women Round Neck Lace top",
-categories:"cothing",
-Productid: "C12346"
-},
-{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
-rupeesig:"₹",
-price:649,
-productName:"BOSSINI Women Round Neck Lace top",
-categories:"cothing",
-Productid: "C12346"
-},
-{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
-rupeesig:"₹",
-price:649,
-productName:"BOSSINI Women Round Neck Lace top",
-categories:"cothing",
-Productid: "C12346"
-},
-{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
-rupeesig:"₹",
-price:649,
-productName:"BOSSINI Women Round Neck Lace top",
-categories:"cothing",
-Productid: "C12346"
-},
-{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010465887-Black-Black-1000010465887_01-2100.jpg",
-rupeesig:"₹",
-price:649,
-productName:"BOSSINI Women Round Neck Lace top",
-categories:"cothing",
-Productid: "C12346"
-},
-{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010444494-Pink-DustyPink-1000010444494_01-2100.jpg",
-rupeesig:"₹",
-price:449,
-productName:"GINGER Women Textured Puffed Top",
-categories:"cothing",
-Productid: "C12347"
-},
-{  image:"https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010444516-Grey-Sage-1000010444516_01-2100.jpg",
-rupeesig:"₹",
-price:897,
-productName:"GINGER Women Solid Round Neck Top",
-categories:"cothing",
-Productid: "C12347"
-}];
 
 displayCart(data);
+displayFav(addToFav);
 
 
 
@@ -125,24 +72,26 @@ function displayPrices(total,discount){
 function removeFromCart(index){
     console.log(index);
     data.splice(index,1);
+    localStorage.setItem("cartData" ,JSON.stringify(data));
     displayCart(data);
 }
 
 // -------------- move to favourite functionalities ----------------
-let addToFav = JSON.parse(localStorage.getItem('favDataArray')) || [];
+// let addToFav = JSON.parse(localStorage.getItem('favDataArray')) || [];
 function moveToFavourite(element,index){
     // console.log(element);
     addToFav.push(element);
     localStorage.setItem("favDataArray",JSON.stringify(addToFav));
     data.splice(index,1);
+    localStorage.setItem('cartData' ,JSON.stringify(data));
     displayCart(data);
-    displayFav();
+    displayFav(addToFav);
 
 }
 
 
-
-function displayFav(){
+// --------displaying cart on favourite section------------------
+function displayFav(addToFav){
     document.querySelector('.fav_item_main_container').innerHTML ="";
 
     let main = document.createElement('div');
@@ -178,24 +127,96 @@ document.querySelector('.fav_item_main_container').append(main);
    })
 }
 
-// for sending favourite to bucket again 
+// for sending cart favourite to bucket again 
 function moveFavToCart(ele,index){
     data.push(ele);
+    localStorage.setItem('cartData' , JSON.stringify(data));
     displayCart(data);
     addToFav.splice(index,1);
     localStorage.setItem('favDataArray',JSON.stringify(addToFav))
-    displayFav();
+    displayFav(addToFav);
 }
 
 
 // -------------------promo-section --------------------
 
 
-let promoSel =document.getElementById('promoSelect');
-promoSel.addEventListener('click',fun);
-function fun(){
+// let promoSel =document.getElementById('promoSelect');
+// promoSel.addEventListener('click',fun);
+// function fun(){
     
-    let x =document.querySelector('.total_payment');
-    console.log(x.innerText)
+//     let x =document.querySelector('.total_payment');
+//     console.log(x.innerText);
+// }
+
+let promocode = document.getElementById('promocode');
+let appPromo_btn = document.getElementById('applyPromocode');
+appPromo_btn.addEventListener('click',evalPromo);
+function evalPromo(event){
+// console.log('hi');
+    let val = promocode.value;
+    let tot_pay = document.querySelector('.total_payment').innerText;
+    tot_pay =Number(tot_pay);
+    let fin_pay;
+    let flag =true;
+    if(val==="FIRST50"){
+        fin_pay = tot_pay*0.5;
+        alert('promocode applied successfully')
+    }else if(val==="SUPER10"){
+        fin_pay = tot_pay*0.1;
+        alert('promocode applied successfully')
+    }else {
+        fin_pay = tot_pay;
+        alert('Either prmocode expire or invalid');
+        flag=false;
+    }
+    // console.log(fin_pay)
+    document.getElementById('okey_btn').addEventListener('click',function(){
+        final_promo_func(fin_pay);
+    })
+
 }
+
+// --------finalPromo function---------
+function final_promo_func(fin_pay){
+    document.querySelector('.total_payment').innerText = fin_pay;
+    let promo_cont = document.querySelector('.promo_container');
+    promo_cont.style.display = "none";
+    let cart_container = document.querySelector('.main_container');
+    cart_container.style.opacity = "1"
+    
+
+}
+
+
+// -----helper of promo section-----
+let promoCli = document.getElementById('promoSelect');
+promoCli.addEventListener('click', function () {
+    let promo_cont = document.querySelector('.promo_container');
+    promo_cont.style.display = "block";
+    let cart_container = document.querySelector('.main_container');
+    cart_container.style.opacity = ".3"
+
+})
+
+let cutPromo = document.getElementById('cutButton');
+cutPromo.addEventListener('click', function () {
+    let promo_cont = document.querySelector('.promo_container');
+    promo_cont.style.display = "none";
+    let cart_container = document.querySelector('.main_container');
+    cart_container.style.opacity = "1"
+})
+
+
+// ---------add event listner to checkout page---------
+
+let checkout_btn = document.querySelector('.checkout');
+checkout_btn.addEventListener('click',goToPaymentPage);
+ function goToPaymentPage(){
+    let final_payment = document.querySelector('.total_payment').innerText
+    localStorage.setItem('total_payment',final_payment);
+    
+
+ }
+
 
