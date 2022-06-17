@@ -11,11 +11,13 @@
 
   <body>
     <div id="sorting">
-      <select id="Categories">
-        <option value="All">Filter items by category</option>
-        <option value="clothing">Clothing</option>
-        <option value="footwear">Footwear</option>
-        <option value="accessories">Accessories</option>
+      <select id="Categ">
+        <option value="">Filter items by category</option>
+        <option value="bags">Bags And Handbags</option>
+        <option value="sneakers">Sneakers And Casuals</option>
+        <option value="loafers">Loafers</option>
+        <option value="heels">Heels</option>
+        <option value="sliders">Sliders</option>
       </select>
       <select id="sortby">
         <option value="">Sort Items by</option>
@@ -345,7 +347,7 @@
 
   let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
   displayData(productData);
-  function displayData() {
+  function displayData(productData) {
     document.querySelector("#main").innerHTML = "";
 
     productData.forEach(function (element) {
@@ -391,19 +393,25 @@
   }
 
   // filter func
-
-  let filter = document.querySelector("#Categories");
-  filter.addEventListener("change", function () {
-    if (filter.value === "All") {
-      displayData(productData);
-    } else {
-      let filtered = productData.filter(function (element) {
-        return element.categories === filter.value;
-      });
-      displayData(filtered);
-      console.log(filtered);
-    }
+  // filter function
+  document.querySelector("#Categ").addEventListener("change", function () {
+    filterData(Categ.value);
   });
+  filterData(""); //calling empty data on refresh
+  function filterData(categories) {
+    let filtered = productData.filter(function (ele) {
+      return ele.categories == categories;
+    });
+    console.log(categories);
+    console.log(filtered);
+    if (categories === "") {
+      displayData(productData);
+      sortFunc(productData);
+    } else {
+      displayData(filtered);
+      sortFunc(filtered);
+    }
+  }
 
   // filter func
 

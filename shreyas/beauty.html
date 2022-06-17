@@ -11,11 +11,14 @@
 
   <body>
     <div id="sorting">
-      <select id="Categories">
+      <select id="Categ">
         <option value="All">Filter items by category</option>
-        <option value="clothing">Clothing</option>
-        <option value="footwear">Footwear</option>
-        <option value="accessories">Accessories</option>
+        <option value="Lips">Lips</option>
+        <option value="Face">Face</option>
+        <option value="Eyes">Eyes</option>
+        <option value="Fragrances">Fragrances</option>
+
+        <option value="Skin">Skin</option>
       </select>
       <select id="sortby">
         <option value="">Sort Items by</option>
@@ -317,7 +320,7 @@
 
   let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
   displayData(productData);
-  function displayData() {
+  function displayData(productData) {
     document.querySelector("#main").innerHTML = "";
 
     productData.forEach(function (element) {
@@ -363,6 +366,25 @@
   }
 
   // filter func
+  // filter function
+  document.querySelector("#Categ").addEventListener("change", function () {
+    filterData(Categ.value);
+  });
+  filterData(""); //calling empty data on refresh
+  function filterData(categories) {
+    let filtered = productData.filter(function (ele) {
+      return ele.categories == categories;
+    });
+    console.log(categories);
+    console.log(filtered);
+    if (categories === "") {
+      displayData(productData);
+      sortFunc(productData);
+    } else {
+      displayData(filtered);
+      sortFunc(filtered);
+    }
+  }
 
   function sortFunc(filtered) {
     document.querySelector("#sortby").addEventListener("change", function () {
