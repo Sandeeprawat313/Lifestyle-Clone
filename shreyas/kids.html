@@ -171,7 +171,7 @@
       symbol: "₹",
       price: 2000,
       itemName: "GINGER Girls Textured Slim Casual Belt",
-      categories: "Accessories",
+      categories: "accessories",
       ProductID: "f112348",
       gender: "male",
       qty: 1,
@@ -183,7 +183,7 @@
       price: 397,
       gender: "female",
       itemName: "Rabbit Bunny Ear with fur Hairband ",
-      categories: "Accessories",
+      categories: "accessories",
       ProductID: "f112349",
       qty: 1,
     },
@@ -194,7 +194,7 @@
       price: 497,
       gender: "female",
       itemName: "Fabric Minnie Cartoons Soft Toy Bag Backpack",
-      categories: "Accessories",
+      categories: "accessories",
       ProductID: "f112350",
       qty: 1,
     },
@@ -205,7 +205,7 @@
       price: 697,
       gender: "male",
       itemName: "Wishkey M16 Laser Toy Action Riffle Gun ",
-      categories: "Accessories",
+      categories: "accessories",
       ProductID: "f112351",
       qty: 1,
     },
@@ -216,7 +216,7 @@
       price: 997,
       itemName: "SKY BAGS for kids",
       gender: "male",
-      categories: "Accessories",
+      categories: "accessories",
       ProductID: "A112352",
       qty: 1,
     },
@@ -226,7 +226,7 @@
       symbol: "₹",
       price: 197,
       itemName: "FS MINI KLUB Girls Bow Accent Booties with Hairband",
-      categories: "Accessories",
+      categories: "accessories",
       ProductID: "A112353",
       qty: 1,
       gender: "female",
@@ -237,7 +237,7 @@
       symbol: "₹",
       price: 297,
       itemName: "GINGER Girls Embellished Backpack",
-      categories: "Accessories",
+      categories: "accessories",
       ProductID: "A112354",
       gender: "female",
       qty: 1,
@@ -248,7 +248,7 @@
       symbol: "₹",
       price: 327,
       itemName: "UV Protection Wayfarer Sunglasses",
-      categories: "Accessories",
+      categories: "accessories",
       ProductID: "A112355",
       qty: 1,
       gender: "female",
@@ -259,7 +259,7 @@
       symbol: "₹",
       price: 120,
       itemName: "TONIQ KIDS Girls Textured Gloves",
-      categories: "Accessories",
+      categories: "accessories",
       ProductID: "A112356",
       qty: 1,
       gender: "female",
@@ -345,7 +345,7 @@
 
   let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
   displayData(productData);
-  function displayData() {
+  function displayData(productData) {
     document.querySelector("#main").innerHTML = "";
 
     productData.forEach(function (element) {
@@ -399,10 +399,11 @@
   filterData(""); //calling empty data on refresh
   function filterData(categories) {
     let filtered = productData.filter(function (ele) {
-      console.log(ele.categories, categories);
       return ele.categories == categories;
     });
-    if (categories == "") {
+    console.log(categories);
+    console.log(filtered);
+    if (categories === "") {
       displayData(productData);
       sortFunc(productData);
     } else {
