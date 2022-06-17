@@ -134,6 +134,8 @@ function moveToFavourite(element,index){
     // console.log(element);
     addToFav.push(element);
     localStorage.setItem("favDataArray",JSON.stringify(addToFav));
+    data.splice(index,1);
+    displayCart(data);
     displayFav();
 
 }
@@ -165,6 +167,10 @@ main.setAttribute('class',"fav_main");
     </div>`
     let btn = document.createElement('button');
     btn.innerText ="Add to basket";
+    btn.setAttribute('class',"fav_btn");
+    btn.addEventListener('click',function(){
+        moveFavToCart(ele,index);
+    })
     fav_div.append(btn);
 main.append(fav_div)
 document.querySelector('.fav_item_main_container').append(main);
@@ -172,5 +178,24 @@ document.querySelector('.fav_item_main_container').append(main);
    })
 }
 
+// for sending favourite to bucket again 
+function moveFavToCart(ele,index){
+    data.push(ele);
+    displayCart(data);
+    addToFav.splice(index,1);
+    localStorage.setItem('favDataArray',JSON.stringify(addToFav))
+    displayFav();
+}
 
+
+// -------------------promo-section --------------------
+
+
+let promoSel =document.getElementById('promoSelect');
+promoSel.addEventListener('click',fun);
+function fun(){
+    
+    let x =document.querySelector('.total_payment');
+    console.log(x.innerText)
+}
 
