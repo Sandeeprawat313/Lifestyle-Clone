@@ -18,6 +18,8 @@
   padding: 10px;
   border-radius: 10px;
 }
+
+
 #main>div:hover{
   height: 105%;
   width: 105%;
@@ -39,13 +41,11 @@ button:hover {
   border: none;
   margin-top: 10px;
 }
-#sorting{
+#function,#sorting{
   display: flex;
   margin-top: 50px;
   margin-left:2.5%;
 }
-
-
 #main>div>div{
   display: flex;
   gap:5px;
