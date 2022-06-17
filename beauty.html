@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KIDS PAGE</title>
+
+    <link rel="stylesheet" href="product2.css" />
+  </head>
+
+  <body>
+    <div id="sorting">
+      <select id="Categ">
+        <option value="All">Filter items by category</option>
+        <option value="Lips">Lips</option>
+        <option value="Face">Face</option>
+        <option value="Eyes">Eyes</option>
+        <option value="Fragrances">Fragrances</option>
+
+        <option value="Skin">Skin</option>
+      </select>
+      <select id="sortby">
+        <option value="">Sort Items by</option>
+        <option value="Alphabetically-AtoZ">Alphabetically-AtoZ</option>
+        <option value="Alphabetically-ZtoA">Alphabetically-ZtoA</option>
+        <option value="Price low to high">Price low to high</option>
+        <option value="Price high to low">Price high to low</option>
+      </select>
+    </div>
+
+    <div id="main"></div>
+  </body>
+</html>
+
+<script>
+  let productData = [
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010674506-1000010674505_01-2100.jpg",
+      symbol: "₹",
+      price: 614,
+      itemName: "CHAMBOR Orosa Matte Perfection Lipstick - 4.5G",
+      categories: "Lips",
+      ProductID: "C112345",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000008528771-1000008528758_01-2100.jpg",
+      symbol: "₹",
+      price: 1250,
+      itemName: "REVLON Ultra HD Matte Lip Mousse",
+      categories: "Lips",
+      ProductID: "C112346",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010674658-1000010674657_01-2100.jpg",
+      symbol: "₹",
+      price: 712,
+      itemName: "CHAMBOR Orosa Butter Lipstick",
+      categories: "Lips",
+      ProductID: "C112347",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007651048-1000007651035_01-2100.jpg",
+      symbol: "₹",
+      price: 559,
+      itemName: "L'Oreal Paris Rouge Signature Matte Liquid Lipstick",
+      categories: "Lips",
+      ProductID: "C112347",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000001247509-1000001247506_02-2100.jpg",
+      symbol: "₹",
+      price: 1399,
+      itemName: " LAKME Absolute Matte Natural Mousse",
+      categories: "Face",
+      ProductID: "A112356",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000006554143-1000006554142_01-2100.jpg",
+      symbol: "₹",
+      price: 1100,
+      itemName: "L'OREAL PARIS True Match Concealer",
+      categories: "Face",
+      ProductID: "A112357",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000008939339-1000008939334_02-2100.jpg",
+      symbol: "₹",
+      price: 850,
+      itemName: "COLORBAR Perfect Match Primer Water",
+      categories: "Face",
+      ProductID: "A112358",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000006113082-1000006113081_07-2100.jpg",
+      symbol: "₹",
+      price: 489,
+      itemName: "LAKME 9To5 Primer And Matte Compact",
+      categories: "Face",
+      ProductID: "A112359",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000004411315-1000004411314_01-2100.jpg",
+      symbol: "₹",
+      price: 716,
+      itemName: "L'OREAL Paris Brow Artist Genius Kit",
+      categories: "Eyes",
+      ProductID: "A112360",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000008598762-1000008598761_02-2100.jpg",
+      symbol: "₹",
+      price: 1850,
+      itemName: " 9 in 1 Eyeshadow Palette- Riverie",
+      categories: "Eyes",
+      ProductID: "A112361",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/0780593219999-1000000118717_01-2100.jpg",
+      symbol: "₹",
+      price: 500,
+      itemName: "MAYBELLINE Eyeliner black",
+      categories: "Eyes",
+      ProductID: "A112362",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000006972910-1000006972909_01-2100.jpg",
+      symbol: "₹",
+      price: 448,
+      itemName: "COLORBAR MesmerEyes Kajal Duo",
+      categories: "Eyes",
+      ProductID: "A112363",
+      qty: 1,
+    },
+
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010518188-1000010518187_02-2100.jpg",
+      symbol: "₹",
+      price: 295,
+      itemName: "Beauty Gel Finish Nail Lacquer - Delicate Daisy",
+      categories: "Nails",
+      ProductID: "f112348",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007291936-1000007291935_02-2100.jpg",
+      symbol: "₹",
+      price: 397,
+      itemName: "COLORBAR Well In Shape Crystal Filer",
+      categories: "Nails",
+      ProductID: "f112349",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011005002-1000011005001_04-2100.jpg",
+      symbol: "₹",
+      price: 5497,
+      itemName: " French Panache EDT Natural Spray - 175ml",
+      categories: "Fragrances",
+      ProductID: "f112350",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000001305646-1000001305645_01-2100.jpg",
+      symbol: "₹",
+      price: 5650,
+      itemName: "BVLGARI Men Marine Perfume- 91352 ",
+      categories: "Fragrances",
+      ProductID: "f112351",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010514136-1000010514135_07-2100.jpg",
+      symbol: "₹",
+      price: 599,
+      itemName: "LAKME Vitamin C+ Serum- 30ml",
+      categories: "Skin",
+      ProductID: "A112352",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000006767584-1000006767583_02-2100.jpg",
+      symbol: "₹",
+      price: 325,
+      itemName: "LAKME Sun Expert  50 PA++ Ultra Matte Gel 50 ml",
+      categories: "Skin",
+      ProductID: "A112353",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010229916-1000010229915_02-2100.jpg",
+      symbol: "₹",
+      price: 2095,
+      itemName: "BEARDO Don Beardos Beard Growth Pro Kit",
+      categories: "Skin",
+      ProductID: "A112354",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000009557995-1000009557994_01-2100.jpg",
+      symbol: "₹",
+      price: 295,
+      itemName: "BOMBAY SHAVING U-Shaped Beard Comb",
+      categories: "Skin",
+      ProductID: "A112355",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000009557991-1000009557990_02-2100.jpg",
+      symbol: "₹",
+      price: 3150,
+      itemName: "BOMBAY SHAVING 6-Part Shaving System",
+      categories: "Skin",
+      ProductID: "A112356",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007863827-1000007863826_04-2100.jpg",
+      symbol: "₹",
+      price: 699,
+      itemName: "THE MAN COMPANY Anti-Hair Fall Serum - 90 ml",
+      categories: "Skin",
+      ProductID: "A112380",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000009004727-1000009004726_01-2100.jpg",
+      symbol: "₹",
+      price: 395,
+      itemName: "BEARDO Creme Power Styling Wax",
+      categories: "Skin",
+      ProductID: "A112381",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000011074559-1000011074558_03-2100.jpg",
+      symbol: "₹",
+      price: 590,
+      itemName: "  Women Anti-Pollution Hair Conditioner- 200 ml",
+      categories: "Skin",
+      ProductID: "A112382",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000009003501-1000009003500_02-2100.jpg",
+      symbol: "₹",
+      price: 350,
+      itemName: "NYKAA Wanderlust Sicilian Sweet Pea Shower Gel",
+      categories: "Skin",
+      ProductID: "A112383",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010097279-1000010097278_01-2100.jpg",
+      symbol: "₹",
+      price: 299,
+      itemName: "USTRAA De-Tan Face Mask - Dry Skin 125gm",
+      categories: "Skin",
+      ProductID: "A112384",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007734630-1000007734629_01-2100.jpg",
+      symbol: "₹",
+      price: 1935,
+      itemName: "Collagen Volume Lifting Cream",
+      categories: "Skin",
+      ProductID: "A112385",
+      qty: 1,
+    },
+    {
+      image:
+        "https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000007863779-1000007863778_04-2100.jpg",
+      symbol: "₹",
+      price: 175,
+      itemName: " Black Pepper and Bergamot Charcoal Cleansing Gel",
+      categories: "Skin",
+      ProductID: "A112386",
+      qty: 1,
+    },
+  ];
+
+  let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+  displayData(productData);
+  function displayData(productData) {
+    document.querySelector("#main").innerHTML = "";
+
+    productData.forEach(function (element) {
+      let content = document.createElement("div");
+      let image = document.createElement("img");
+      image.src = element.image;
+      let symbol = document.createElement("p");
+      symbol.innerText = element.symbol;
+      let price = document.createElement("p");
+      price.innerText = element.price;
+      let priceBox = document.createElement("div");
+      priceBox.append(symbol, price);
+      let itemName = document.createElement("p");
+      itemName.innerText = element.itemName;
+      let categories = document.createElement("p");
+      categories.innerText = element.categories;
+      let btn = document.createElement("button");
+      btn.innerText = "ADD TO CART";
+      btn.addEventListener("click", function () {
+        if (checkCartItem(element.ProductID) == true) {
+          cartData.push(element);
+          localStorage.setItem("cartData", JSON.stringify(cartData));
+          alert("Product Added to the cart");
+        } else {
+          alert("Product already in the cart");
+        }
+      });
+
+      content.append(image, itemName, priceBox, btn);
+      document.querySelector("#main").append(content);
+    });
+  }
+  //add to cart function
+  function checkCartItem(ProductID) {
+    let filter = cartData.filter(function (element) {
+      return element.ProductID == ProductID;
+    });
+    if (filter.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  // filter func
+  // filter function
+  document.querySelector("#Categ").addEventListener("change", function () {
+    filterData(Categ.value);
+  });
+  filterData(""); //calling empty data on refresh
+  function filterData(categories) {
+    let filtered = productData.filter(function (ele) {
+      return ele.categories == categories;
+    });
+    console.log(categories);
+    console.log(filtered);
+    if (categories === "") {
+      displayData(productData);
+      sortFunc(productData);
+    } else {
+      displayData(filtered);
+      sortFunc(filtered);
+    }
+  }
+
+  function sortFunc(filtered) {
+    document.querySelector("#sortby").addEventListener("change", function () {
+      if (sortby.value === "Price low to high") {
+        let sortData = filtered.sort(function (a, b) {
+          return a.price - b.price;
+        });
+        displayData(sortData);
+        console.log(sortData);
+      }
+      if (sortby.value == "Price high to low") {
+        let sortData = filtered.sort(function (a, b) {
+          return b.price - a.price;
+        });
+        displayData(sortData);
+      }
+      if (sortby.value == "Alphabetically-AtoZ") {
+        let sortData = filtered.sort(function (a, b) {
+          if (a.itemName > b.itemName) return 1;
+          if (a.itemName < b.itemName) return -1;
+          return 0;
+        });
+        displayData(sortData);
+      }
+      if (sortby.value == "Alphabetically-ZtoA") {
+        let sortData = filtered.sort(function (a, b) {
+          if (a.itemName > b.itemName) return -1;
+          if (a.itemName < b.itemName) return 1;
+          return 0;
+        });
+        displayData(sortData);
+      }
+    });
+  }
+</script>
