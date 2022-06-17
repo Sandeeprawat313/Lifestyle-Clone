@@ -24,7 +24,7 @@
         </select>
     </div>
 
-    <div id="maindiv"></div>
+    <div id="main"></div>
 </body>
 </html>
 <script>
@@ -224,14 +224,14 @@ qty:1},
 {image:"https://6c819239693cc4960b69-cc9b957bf963b53239339d3141093094.lmsin.net/1000007210930-25219-Black-Black-1000007210930-25219_01-196.jpg",
 rupeesig:"₹",
 price:650,
-productName:" Floral Embroidered Sandals",
+productName:" Floral Embroidered Sandals",
 categories:"footwere",
 Productid:"A12384",
 qty:1},
 {image:"https://lmsin.net/cdn-cgi/image/h=1125,w=1125,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/lifestyle/1000010491012-Pink-1000010491012_06-2100.jpg",
 rupeesig:"₹",
 price:450,
-productName:"GINGER Women Open-Toe ",
+productName:"GINGER Women Open-Toe ",
 categories:"footwere",
 Productid:"A12385",
 qty:1},
@@ -250,10 +250,10 @@ displyData(productData)
 
 // display data using JS
 function displyData(productData){
-document.querySelector("#maindiv").innerHTML=""
+document.querySelector("#main").innerHTML=""
 productData.forEach(function(ele){
 let box = document.createElement("div")
-document.querySelector("#maindiv").append(box)
+document.querySelector("#main").append(box)
 let image = document.createElement("img")
 image.setAttribute("src",ele.image)
 let rupeesig = document.createElement("p")
