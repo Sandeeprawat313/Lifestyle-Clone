@@ -80,7 +80,7 @@
                         <p>0</p>
                     </div>
                     <div>
-                        <p>Total</p>
+                        <p >Total</p>
                         <p class="total_payment"></p>
                     </div>
                     <p class="checkout">
@@ -106,7 +106,7 @@
             <input type="button" value="Apply" id="applyPromocode">
         </div>
         <div>
-            <button>OKEY</button>
+            <button id="okey_btn">OKEY</button>
         </div>
     </div>
 
@@ -115,21 +115,6 @@
 </html>
 
 <script>
-    let promoCli = document.getElementById('promoSelect');
-    promoCli.addEventListener('click', function () {
-        let promo_cont = document.querySelector('.promo_container');
-        promo_cont.style.display = "block";
-        let cart_container = document.querySelector('.main_container');
-        cart_container.style.opacity = ".3"
-
-    })
-
-    let cutPromo = document.getElementById('cutButton');
-    cutPromo.addEventListener('click', function () {
-        let promo_cont = document.querySelector('.promo_container');
-        promo_cont.style.display = "none";
-        let cart_container = document.querySelector('.main_container');
-        cart_container.style.opacity = "1"
-    })
+ 
 </script>
 <script src="cart.js"></script>

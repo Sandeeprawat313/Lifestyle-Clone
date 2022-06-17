@@ -45,6 +45,7 @@ button {
     display: flex;
     justify-content: space-between;
     position: relative;
+    /* border: 1px solid black; */
 }
 
 .cart>div:first-child {
@@ -340,14 +341,17 @@ button {
 }
 
 
-/* --------stalying for add to favourite part */
+/* --------styling for add to favourite part */
 #cart_content{
-    position: relative;
-    bottom: 0;
+    /* position: relative; */
+    /* bottom: 0; */
 }
 .fav_item_main_container{
     position: absolute;
     top: 100%;
+    width: 500px;
+    /* border: 1px solid green; */
+    /* display: block; */
 }
 .fav_main{
     width: 100%;
@@ -357,6 +361,7 @@ button {
     /* background-color: teal; */
     /* padding-top: 30px; */
     /* border: 1px solid saddlebrown ; */
+    /* overflow-x: scroll; */
 }
 .fav_main>div:nth-child(even){
     margin: 0 13px;
