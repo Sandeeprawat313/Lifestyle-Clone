@@ -30,12 +30,12 @@
            
         }
         #navbar{
-            border:1px solid green;
             height:40px;
-            width:100%;
+            width:1200px;
+            border: 1px solid green;
             display:flex;
-            padding:10px 100px 10px 100px;
-            justify-content:space-evenly ;
+            padding:10px 200px 10px 100px;
+            justify-content: space-around;
             position: sticky;
     
         }
@@ -54,7 +54,6 @@
         #photo{
             width:80%;
             height:400px;
-            border: 1px solid teal;
             display: grid;
             grid-template-columns: repeat(5,1fr);
             margin: auto;
@@ -66,7 +65,6 @@
         #subscribe{
             width: 80%;
             height: 60px;
-            border: 1px solid grey;
             margin: auto;
             margin-top: 50px;
             padding: 0%;
@@ -83,7 +81,6 @@
         #button_display{
             width: 80%;
             height: 60px;
-            border: 1px solid grey;
             margin: auto;
             margin-top: 50px;
             padding: 0%;
@@ -93,6 +90,8 @@
         }
         #button_left,#button_right{
             width: 42%;
+            display:flex;
+            align-items: center;
         }
         #btn{
             width:50%;
@@ -107,10 +106,7 @@
             color: white;
             font-size: larger;
         }
-        #button_right>img{
-            height: 100px;
         
-        }
         #ending{
         
         width:80%;
@@ -128,6 +124,82 @@
         p{
             color: grey;
         }
+        #google{
+
+            height:120px;
+            width: 200px;
+        
+        }
+        #click_women{
+         position: absolute;
+         top:450px;
+         left:200px;
+         width:150px;
+         height:60px;
+         background-color: white;
+         color:orange;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+        }
+        #click_men{
+         position: absolute;
+         top:450px;
+         left:450px;
+         width:150px;
+         height:60px;
+         background-color: white;
+         color:orange;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+        }
+        #click_kid{
+         position: absolute;
+         top:450px;
+         left:690px;
+         width:150px;
+         height:60px;
+         background-color: white;
+         color:orange;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+        }
+        #click_shoes{
+         position: absolute;
+         top:450px;
+         left:920px;
+         width:150px;
+         height:60px;
+         background-color: white;
+         color:orange;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+        }
+        #click_beauty{
+         position: absolute;
+         top:450px;
+         left:1160px;
+         width:150px;
+         height:60px;
+         background-color: white;
+         color:orange;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+        }
 
     </style>
 
@@ -135,7 +207,7 @@
 </head>
 <body>
     <div id="top">
-        <div id="top_left">  <div>Free Shipping</div>
+        <div id="top_left"> <div>Free Shipping</div>
         <div>Click and Collect</div>
         <div>Return to Store</div></div>
       <div id="top_right">
@@ -148,14 +220,17 @@
         <div id="logo">
             <img src="https://tse1.mm.bing.net/th?id=OIP.xky7ML7pDM9z7CpHzgQBiQHaC1&pid=Api&rs=1&c=1&qlt=95&w=313&h=119" alt="not">
         </div>
-        <div>Women</div>
-        <div>Man</div>
-        <div>Kids</div>
-        <div>Shoes & Bags</div>
-        <div>Beauty</div>
+        <div>
+            <a href="">Women</a>
+        </div>
+        <div><a href="">Men</a></div>
+        <div><a href="">Kids</a></div>
+        <div><a href="">Shoes & Bags</a></div>
+        <div><a href="">Beauty</a></div>
         <div><input id="search" type="text" placeholder="What are you looking for?"></div>
-        <div>Sign Up-Sign-In</div>
-        <div>Basket</div>
+        <div><a href="">Sign Up-Sign-In</a></div>
+        <div><a href="">Basket</a></div>
+        
       </div>
       <div id="photo">
         <div>
@@ -190,8 +265,8 @@
              <button id="sub">Subscribe</button>
         </div>
         <div id="button_right">
-            <img src="https://www.svgrepo.com/show/303128/download-on-the-app-store-apple-logo.svg" alt="">
-            <img src="https://tse1.mm.bing.net/th?id=OIP.Ry58QieXJD2x9-OwqnNS7AHaEB&pid=Api&rs=1&c=1&qlt=95&w=216&h=117" alt="">
+            <img id="apple" src="https://www.svgrepo.com/show/303128/download-on-the-app-store-apple-logo.svg" alt="">
+            <img id="google" src="https://tse1.mm.bing.net/th?id=OIP.Ry58QieXJD2x9-OwqnNS7AHaEB&pid=Api&rs=1&c=1&qlt=95&w=216&h=117" alt="">
         </div> 
       </div>
       <div id="ending">
@@ -284,5 +359,11 @@
             <p>Help Centre</p>
         </div>
       </div>
+      <div id="click_women">WOMEN</div>
+      <div id="click_men">MEN</div>
+      <div id="click_kid">KIDS</div>
+      <div id="click_shoes">SHOES & BAGS</div>
+      <div id="click_beauty">BEAUTY</div>
+
 </body>
-</html>
+</html> 
