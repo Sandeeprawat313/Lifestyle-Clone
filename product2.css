@@ -48,3 +48,22 @@
     cursor: pointer;
     transform: scale(0.9);
   }
+
+  @media all and (min-width:500px) and (max-width:650px){
+    #main{
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
+}
+@media all and (min-width:350px) and (max-width:500px){
+    #main{
+    grid-template-columns: repeat(2,1fr);
+    gap: 5px;
+}
+}
+@media all and (min-width:50px) and (max-width:350px){
+    #main{
+    grid-template-columns: repeat(1,1fr);
+    width: 80%;
+}
+}
