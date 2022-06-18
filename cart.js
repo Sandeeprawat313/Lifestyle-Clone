@@ -3,6 +3,7 @@ let data = JSON.parse(localStorage.getItem('cartData')) || [];
 let addToFav = JSON.parse(localStorage.getItem('favDataArray')) || [];
 
 
+
 displayCart(data);
 displayFav(addToFav);
 
@@ -13,6 +14,7 @@ function displayCart(data){
     let mrp =0;
     let offerDiscount =0;
     data.forEach(function(ele,index){
+        
         // inside function
         let actualPrice =ele.price -(ele.price*0.2);
         actualPrice =Math.floor(actualPrice);
@@ -34,7 +36,7 @@ function displayCart(data){
         <p>ProductId : ${ele.Productid}</p>
     </div>
     </div>
-    <h2><p class="delsym"><i class="fa-solid fa-blinds"></i>||||</p><span class="delevery" style="font-weight:normal;">Delivery in   </span> <span> Enter pincode above</span><span class="qty">Qty:1</span></h2> ` ;
+    <h2><p class="delsym"><i class="fa-solid fa-blinds"></i></p><span class="delevery" style="font-weight:normal;">Delivery in   </span> <span> Enter pincode above</span><span class="qty">Qty:1</span></h2> ` ;
     let delRem_div = document.createElement('div');
     let remove = document.createElement('h5');
     remove.innerText ="Remove";

@@ -104,6 +104,9 @@ a{
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: 100px 100px;
+        position: relative;
+        top: 400px;
+        z-index: -5;
      }
      .end_footer>div{
         border-top: 1px solid #929391;
@@ -156,6 +159,9 @@ a{
       grid-template-columns: repeat(5,1fr);
       grid-template-rows: repeat(2,1fr);
       row-gap: 50px;
+      position: relative;
+      top: 350px;
+      z-index: -1;
       }
       #ending p{
           color: rgb(95, 93, 93);
