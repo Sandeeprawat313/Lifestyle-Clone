@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Hubballi&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo 2', cursive;
+}
+#heading{
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: blue;
+    text-align: center;
+}
+
+#container{
+    background-color: white;
+    width: 100%;
+    margin: auto;
+    padding: 10%;
+   
+}
+#form>input{
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+    font-size: 15px;
+}
+#form>input:last-child{
+    padding: 5px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    background-color: #448aff;
+    font-size: 20px;
+    color: white;
+}
+#form>input:last-child:hover{
+    cursor: pointer;
+}
+#que{
+    text-align: center;
+    color: grey;
+}
+#anc{
+    text-align: center;
+    margin-top: 20px;
+    display: block;
+}
+#form{
+    margin-bottom: 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    width: 30%;
+    margin: auto;
+    margin-bottom: 30px;
+}
