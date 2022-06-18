@@ -3,6 +3,7 @@ let data = JSON.parse(localStorage.getItem('cartData')) || [];
 let addToFav = JSON.parse(localStorage.getItem('favDataArray')) || [];
 
 
+
 displayCart(data);
 displayFav(addToFav);
 
@@ -13,6 +14,7 @@ function displayCart(data){
     let mrp =0;
     let offerDiscount =0;
     data.forEach(function(ele,index){
+        
         // inside function
         let actualPrice =ele.price -(ele.price*0.2);
         actualPrice =Math.floor(actualPrice);
