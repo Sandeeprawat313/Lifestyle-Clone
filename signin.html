@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <div id="container">
+        <h2 id="heading">Sign-In</h2>
+        <form id="form">
+            <input id="email" type="email" placeholder="Email">
+            <input id="password" type="password" placeholder="Password">
+            <input id="sub" type="submit" value="Sign In">
+        </form>
+        <p id="que">New To lifestyle?</p>
+        <a id="anc" href="signup.html">Register Here</a>
+    </div>
+</body>
+</html>
+<script>
+    let form = document.querySelector("form")
+    let userData = JSON.parse(localStorage.getItem("userData")) || []
+    form.addEventListener("submit", funSignIn)
+    function funSignIn(){
+        event.preventDefault();
+        let data = {
+            email:form.email.value,
+            password:form.password.value
+        }
+        if(checkSignIn(data.email, data.password)===true){
+            localStorage.setItem("signIn",JSON.stringify(data))
+            alert("Sign In Successfully")
+            window.location.href="index.html"
+        }
+        else{
+            alert("Wrong Email or Password")
+        }
+        
+    }
+    function checkSignIn(email,password){
+        let filtered = userData.filter(function(element){
+            return email === element.email && element.password === password
+        })
+        if(filtered.length > 0){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+</script>
